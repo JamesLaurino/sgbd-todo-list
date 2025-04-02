@@ -22,4 +22,8 @@ Route::get('/tasks', [TaskController::class, 'index'])
     ->name("task.index")
     ->middleware('auth');
 
+Route::post('/task', [TaskController::class, 'store'])
+    ->name("task.store")
+    ->middleware('auth');
+
 require __DIR__.'/auth.php';
