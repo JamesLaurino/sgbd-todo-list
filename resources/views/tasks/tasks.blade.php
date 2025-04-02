@@ -20,14 +20,15 @@
 <div>
     @foreach($tasks as $task)
         <div>
-                <span>{{$task->title}}</span>
-                <input type="checkbox" name="box" />
-                <form method="POST" action="{{route("task.destroy", $task->id)}}">
-                    @csrf
-                    @method("DELETE")
-                    <button>delete</button>
-                </form>
-                <br>
+        <span>{{$task->title}}</span>
+        <input type="checkbox" name="box" />
+            <form method="POST" action="{{ route('task.destroy', $task->id) }}"
+                  onsubmit="return confirm('Voulez-vous vraiment supprimer cette tâche ?');">
+                @csrf
+                @method("DELETE")
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+        <br>
         </div>
     @endforeach
 </div>
