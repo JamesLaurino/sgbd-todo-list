@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -11,7 +14,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::user()->getAuthIdentifier();
+        $tasks = Task::all();
+        $tasksUser = $tasks->where("user_id", "=", $userId)
+            ->where("completed", "=", "0");
+        return view("tasks.tasks", ["tasks" => $tasksUser]);
     }
 
     /**
