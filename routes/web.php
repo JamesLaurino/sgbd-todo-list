@@ -26,4 +26,8 @@ Route::post('/task', [TaskController::class, 'store'])
     ->name("task.store")
     ->middleware('auth');
 
+Route::delete('/task/{id}', [TaskController::class, 'destroy'])
+    ->name("task.destroy")
+    ->middleware('auth');
+
 require __DIR__.'/auth.php';

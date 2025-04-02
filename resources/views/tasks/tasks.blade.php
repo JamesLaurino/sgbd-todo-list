@@ -20,9 +20,13 @@
 <div>
     @foreach($tasks as $task)
         <div>
-                <input type="checkbox" name="box" />
                 <span>{{$task->title}}</span>
-                <button>delete</button>
+                <input type="checkbox" name="box" />
+                <form method="POST" action="{{route("task.destroy", $task->id)}}">
+                    @csrf
+                    @method("DELETE")
+                    <button>delete</button>
+                </form>
                 <br>
         </div>
     @endforeach
