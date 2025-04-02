@@ -15,7 +15,7 @@ class TaskFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'completed' => fake()->unique()->safeEmail(),
+            'completed' => fake()->boolean()
         ];
     }
 }
