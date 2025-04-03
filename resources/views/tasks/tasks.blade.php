@@ -9,10 +9,7 @@
 @endsection
 
 @section("nav")
-    <div class="container-fluid text-white d-flex justify-content-center bg-dark p-3">
-            <span class="h3 mr-3">Ma todo liste</span> <!-- Texte -->
-            <span class="fas fa-book mt-2" style="font-size: 1.5rem;"></span>
-    </div>
+    <x-navbar></x-navbar>
 @endsection
 
 @section("body")
@@ -61,7 +58,4 @@
             </div>
         @endforeach
     </div>
-
-
-
 @endsection
