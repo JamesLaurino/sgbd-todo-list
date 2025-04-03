@@ -54,7 +54,9 @@
                       onsubmit="return confirm('Voulez-vous vraiment supprimer cette tâche ?');">
                     @csrf
                     @method("DELETE")
-                    <button class="btn btn-danger btn-sm">Supprimer</button>
+                    <button class="btn btn-link text-danger p-0 border-0">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 </form>
             </div>
         @endforeach
