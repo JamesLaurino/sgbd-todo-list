@@ -11,7 +11,7 @@
 
     @auth
         <div class="my-2 my-lg-0 mr-5">
-            <a href="/dashboard" class="text-white">Dashbord</a>
+            <a class="nav-link text-white" href="/dashboard">Dashbord</a>
         </div>
     @endauth
 </nav>
