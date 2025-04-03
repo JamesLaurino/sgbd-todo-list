@@ -10,14 +10,15 @@
 
 @section("nav")
     <div class="container-fluid text-white d-flex justify-content-center bg-dark p-3">
-        <p class="h3">Ma todo liste</p>
+            <span class="h3 mr-3">Ma todo liste</span> <!-- Texte -->
+            <span class="fas fa-book mt-2" style="font-size: 1.5rem;"></span>
     </div>
 @endsection
 
 @section("body")
     <div>
         @if(session("success"))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 {{session("success")}}
             </div>
         @endif
@@ -27,7 +28,6 @@
         <form method="POST" action="{{route('task.store')}}" class="form-inline shadow p-4">
             @csrf
             <div class="form-group mr-4">
-{{--                <input type="text" id="title" name="title" class="form-control mr-2" required placeholder="Nom">--}}
                 <span class="input-field" style="max-width: 250px">
                     <input type="text" id="title" name="title" required>
                     <label for="title">Nom</label>
