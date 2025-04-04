@@ -21,6 +21,7 @@
         @endif
     </div>
 
+{{--    Ajouter une TASK--}}
     <div class="container d-flex justify-content-center mt-5">
         <form method="POST" action="{{route('task.store')}}" class="form-inline shadow p-4">
             @csrf
@@ -37,6 +38,8 @@
         </form>
     </div>
 
+
+{{--    Supprimer une Task--}}
     <div class="container d-flex flex-column align-items-center mt-5">
         @foreach($tasks as $task)
             <div class="d-flex align-items-center justify-content-between w-50 border p-3 shadow rounded mb-2">
@@ -44,18 +47,17 @@
                     <input type="checkbox" class="custom-control-input" id="task-{{$task->id}}" name="box">
                     <label class="custom-control-label" for="task-{{$task->id}}"></label>
                 </div>
-
                 <span class="flex-grow-1">{{$task->title}}</span>
-
-                <form method="POST" action="{{ route('task.destroy', $task->id) }}"
-                      onsubmit="return confirm('Voulez-vous vraiment supprimer cette tâche ?');">
-                    @csrf
-                    @method("DELETE")
-                    <button class="btn btn-link text-danger p-0 border-0">
+                    <button class="btn btn-link text-danger p-0 border-0"
+                            data-toggle="modal" data-target="#delete">
                         <i class="fas fa-trash-alt"></i>
                     </button>
-                </form>
             </div>
+
+{{--        appel du modal--}}
+            <x-modal-delete :taskId="$task->id"></x-modal-delete>
         @endforeach
     </div>
+
+
 @endsection
