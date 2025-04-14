@@ -16,8 +16,7 @@ class TaskController extends Controller
         $userId = Auth::user()->getAuthIdentifier();
         $tasks = Task::all();
         $tasksUser = $tasks
-            ->where("user_id", "=", $userId)
-            ->where("completed", "=", "0");
+            ->where("user_id", "=", $userId);
 
         return view("tasks.tasks", ["tasks" => $tasksUser]);
     }
@@ -69,7 +68,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->completed = true;
+        $task->save();
+        return redirect()->route('task.index');
     }
 
     /**

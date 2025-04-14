@@ -30,4 +30,8 @@ Route::delete('/task/{id}', [TaskController::class, 'destroy'])
     ->name("task.destroy")
     ->middleware('auth');
 
+Route::patch('/task/{id}', [TaskController::class, 'update'])
+    ->name("task.update")
+    ->middleware('auth');
+
 require __DIR__.'/auth.php';

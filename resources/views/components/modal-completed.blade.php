@@ -1,24 +1,24 @@
 @props(["taskId"])
 
-<!-- Modal delete -->
-<div class="modal fade" id="delete-{{ $taskId }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal completed -->
+<div class="modal fade" id="completed-{{ $taskId }}"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation de completion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Est-ce que vous certain de vouloir supprimer la tâche ?
+                Est-ce que vous certain de vouloir mettre la tâche en completé ?
             </div>
-            <form method="POST" action="{{ route('task.destroy', $taskId) }}">
+            <form method="POST" action="{{ route('task.update', $taskId) }}">
                 @csrf
-                @method("DELETE")
+                @method("PATCH")
                 <div class="modal-footer">
                     <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-warning">Completed</button>
                 </div>
             </form>
         </div>

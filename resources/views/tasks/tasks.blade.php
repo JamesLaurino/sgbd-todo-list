@@ -39,22 +39,41 @@
     </div>
 
 
-{{--    Supprimer une Task--}}
+{{--    Supprimer - completed a Task--}}
     <div class="container d-flex flex-column align-items-center mt-5">
         @foreach($tasks as $task)
-            <div class="d-flex align-items-center justify-content-between w-50 border p-3 shadow rounded mb-2">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="task-{{$task->id}}" name="box">
-                    <label class="custom-control-label" for="task-{{$task->id}}"></label>
-                </div>
-                <span class="flex-grow-1">{{$task->title}}</span>
+            @if($task->completed == false)
+                <div class="d-flex align-items-center justify-content-between w-50 border p-3 shadow rounded mb-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="task-{{$task->id}}" name="box">
+                            <label class="custom-control-label" for="task-{{$task->id}}"></label>
+                        </div>
+                    <span class="flex-grow-1">{{$task->title}}</span>
+                    <button class="btn btn-link text-success p-0 border-0 mr-2"
+                            data-toggle="modal" data-target="#completed-{{ $task->id }}">
+                        <i class="fas fa-check"></i>
+                    </button>
                     <button class="btn btn-link text-danger p-0 border-0"
-                            data-toggle="modal" data-target="#delete">
+                            data-toggle="modal" data-target="#delete-{{ $task->id }}">
                         <i class="fas fa-trash-alt"></i>
                     </button>
-            </div>
+                </div>
 
-{{--        appel du modal--}}
+            @else
+                <div class="d-flex align-items-center justify-content-between w-50 border p-3 shadow rounded mb-2">
+                    <s><span class="flex-grow-1">{{$task->title}}</span></s>
+                    <button class="btn btn-link text-danger p-0 border-0"
+                            data-toggle="modal" data-target="#delete-{{ $task->id }}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+
+            @endif
+
+            {{-- appel du modal complete --}}
+            <x-modal-completed :taskId="$task->id"></x-modal-completed>
+
+            {{--  appel du modal delete --}}
             <x-modal-delete :taskId="$task->id"></x-modal-delete>
         @endforeach
     </div>
