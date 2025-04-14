@@ -17,16 +17,10 @@
                 @csrf
                 @method("PATCH")
                 <div class="modal-footer">
-                    <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnCompleted" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-warning">Completed</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById("closeBtn").addEventListener("click", function() {
-        window.history.back();
-    });
-</script>

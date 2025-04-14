@@ -24,9 +24,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById("closeBtn").addEventListener("click", function() {
-        window.history.back();
-    });
-</script>
